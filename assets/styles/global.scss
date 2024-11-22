@@ -1,0 +1,36 @@
+:root {
+  --g-header-height: 134px;
+  // 左右两侧间距
+  --g-padding-x: 50px;
+  // 侧边面板
+  --g-slider-panel-width: 442px;
+  --g-slider-panel-padding: 10px 8px;
+  --g-slider-panel-bg: rgb(7, 15, 35, 80%);
+}
+
+body {
+  user-select: none;
+}
+
+@font-face {
+  font-family: 'aliPuHuiTi';
+  src:
+    url('/fonts/AlibabaPuHuiTi-3-65-Medium.woff2') format('woff2'),
+    url('/fonts/AlibabaPuHuiTi-3-35-Medium.woff') format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: din;
+  src: url('/fonts/D-DIN-PRO-500-Medium.otf');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: YouSheBiaoTiHei;
+  src: url('/fonts/YouSheBiaoTiHei-2.ttf');
+  font-style: normal;
+  font-display: swap;
+}
