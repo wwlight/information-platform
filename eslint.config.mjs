@@ -8,6 +8,7 @@ export default withNuxt(
     formatters: true,
     ignores: [
       'assets/mapData/*',
+      'public/download-datav-maps.cjs',
       'README.md',
     ],
     rules: {
