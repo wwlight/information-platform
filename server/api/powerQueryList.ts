@@ -80,7 +80,7 @@ export default defineEventHandler(async (event) => {
           ],
         }
         break
-      default:
+      case 110100:
         res = {
           code: 200,
           msg: '操作成功',
@@ -146,6 +146,13 @@ export default defineEventHandler(async (event) => {
               deviceNames: '',
             },
           ],
+        }
+        break
+      default:
+        res = {
+          code: 200,
+          msg: '操作成功',
+          data: [],
         }
         break
     }

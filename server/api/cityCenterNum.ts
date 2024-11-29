@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
           ],
         }
         break
-      default:
+      case '110000':
         res = {
           code: 200,
           msg: '操作成功',
@@ -64,6 +64,13 @@ export default defineEventHandler(async (event) => {
               lng: '116.724502',
             },
           ],
+        }
+        break
+      default:
+        res = {
+          code: 200,
+          msg: '操作成功',
+          data: [],
         }
         break
     }
