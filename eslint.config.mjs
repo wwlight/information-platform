@@ -8,6 +8,7 @@ export default withNuxt(
     formatters: true,
     ignores: [
       'assets/mapData/*',
+      'README.md',
     ],
     rules: {
       'no-use-before-define': 'off',

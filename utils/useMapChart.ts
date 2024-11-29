@@ -58,6 +58,7 @@ export default function useMapChart() {
         show: false,
       },
       geo: [
+        // 地图轮廓投影
         {
           map: mapName,
           layoutCenter: ['50%', '70%'],
@@ -69,6 +70,7 @@ export default function useMapChart() {
             shadowColor: 'rgba(0, 132, 254, 0.83)',
             shadowBlur: 20,
           },
+          // 隐藏
           regions: [{
             name: '南海诸岛',
             itemStyle: {
@@ -76,6 +78,7 @@ export default function useMapChart() {
             },
           }],
         },
+        // 上层交换图层
         {
           map: mapName,
           layoutCenter: ['50%', '70%'],
@@ -109,6 +112,7 @@ export default function useMapChart() {
             },
           }],
         },
+        // 下层投影效果图层，实现立体感
         {
           map: mapName,
           zlevel: -1,
@@ -133,6 +137,7 @@ export default function useMapChart() {
             shadowOffsetY: 0,
             shadowBlur: 20,
           },
+          // 隐藏
           regions: [{
             name: '南海诸岛',
             itemStyle: {
