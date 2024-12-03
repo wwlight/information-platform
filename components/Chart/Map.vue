@@ -101,7 +101,13 @@ async function getCityCenterNumData() {
 async function getPowerList(cityId: string) {
   const params = Object.assign({}, search.value, { cityId })
   const [data] = await powerQueryList(params)
-  dialogPowerList.value = data
+  const result = (data || []).map((item: any) => {
+    item.commissioningDate = item.commissioningDate ? useDateFormat(item.commissioningDate, 'YYYY-MM-DD') : ''
+    const index = typeof item.name === 'string' ? item.name.indexOf('算力中心') : -1
+    item.label = index !== -1 ? item.name.slice(0, index + 4) : item.name
+    return item
+  })
+  dialogPowerList.value = result
 }
 
 async function renderMap(init = false) {
@@ -148,9 +154,7 @@ function updateOption() {
 }
 
 async function handleMapClick(event: any) {
-  if (event.name === '南海诸岛'
-    || (!['北京市', '天津市', '上海市', '重庆市', '香港特别行政区', '澳门特别行政区'].includes(event.name)
-      && regionName.value === event.name)
+  if (event.name === '南海诸岛' || ((['海南省', '台湾省'].includes(event.name) && regionName.value === event.name))
   ) {
     return
   }

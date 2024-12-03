@@ -86,7 +86,7 @@ export default function useMapChart() {
           label: {
             show: true,
             color: '#bbd0fd',
-            fontSize: 12,
+            fontSize: 14,
           },
           emphasis: {
             label: {

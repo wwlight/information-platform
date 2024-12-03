@@ -20,9 +20,9 @@ const computeCapacityOptions = ref([
 ])
 const regionOptions = ref<any>([])
 const cascaderProps = {
-  expandTrigger: 'hover' as const,
   label: 'name',
   value: 'id',
+  checkStrictly: true,
 }
 
 onMounted(() => {
@@ -75,12 +75,15 @@ watch(datetime, (date) => {
 </script>
 
 <template>
-  <div class="absolute left-600 top-80 z-11" flex="~ gap-20">
+  <div class="absolute left-660 top-80 z-11" flex="~ gap-20">
     <el-input v-model="search.centerName" placeholder="算力中心名称" clearable maxlength="20" />
     <el-select v-model="computeCapacity" :teleported="false" placeholder="算力规模" clearable>
       <el-option v-for="item, index in computeCapacityOptions" :key="index" :label="item.label" :value="item.value" />
     </el-select>
-    <el-cascader v-model="regionSelect" :options="regionOptions" :props="cascaderProps" :teleported="false" placeholder="算力位置" clearable />
+    <el-cascader
+      v-model="regionSelect" :options="regionOptions" :props="cascaderProps" :teleported="false"
+      :show-all-levels="false" placeholder="算力位置" clearable filterable
+    />
     <el-date-picker
       v-model="datetime" type="daterange" range-separator="~" start-placeholder="投产开始时间"
       end-placeholder="投产结束时间" value-format="YYYY-MM-DD" :teleported="false" class="!h-35 !w-290"
@@ -166,6 +169,37 @@ watch(datetime, (date) => {
   }
 }
 
+:deep(.el-cascader__dropdown.el-popper) {
+  --el-bg-color-overlay: #0c1428;
+  --el-cascader-menu-fill: #0c1428;
+  --el-cascader-menu-border: 1px solid #5b91da;
+
+  .el-cascader-panel {
+    --el-cascader-menu-border: 1px solid #5b91da;
+    --el-cascader-menu-text-color: #d1dff1;
+    --el-cascader-color-empty: #d1dff1;
+    --el-cascader-node-background-hover: rgb(56, 137, 247, 20%);
+    --el-cascader-menu-selected-text-color: #6facff;
+
+    .el-radio {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+
+    .el-radio__input {
+      display: none;
+    }
+  }
+
+  .el-cascader__suggestion-list {
+    --el-cascader-menu-text-color: #6facff;
+    --el-cascader-node-background-hover: rgb(56, 137, 247, 20%);
+  }
+}
+
 :deep(.el-date-editor) {
   --el-input-border-color: #5485c8;
   --el-input-hover-border-color: #6facff;
@@ -208,20 +242,6 @@ watch(datetime, (date) => {
 
   .el-popper__arrow:before {
     background: #0c1428;
-  }
-}
-
-:deep(.el-cascader__dropdown.el-popper) {
-  --el-bg-color-overlay: #0c1428;
-  --el-cascader-menu-fill: #0c1428;
-  --el-cascader-menu-border: 1px solid #5b91da;
-
-  .el-cascader-panel {
-    --el-cascader-menu-border: 1px solid #5b91da;
-    --el-cascader-menu-text-color: #d1dff1;
-    --el-cascader-color-empty: #d1dff1;
-    --el-cascader-node-background-hover: rgb(56, 137, 247, 20%);
-    --el-cascader-menu-selected-text-color: #6facff;
   }
 }
 </style>
