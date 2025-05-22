@@ -7,11 +7,10 @@
   ![](./public/1C7B3406-C919-4C7A-AE53-7C38E69CE186.png)
 - 在线预览:
 
-| 访问地址 | 操作项 |
-| :---: | :---: |
-| <a href="https://infomation-platform.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/vercel%20%E5%9C%B0%E5%9D%80-https://infomation--platform.vercel.app/-brightgreen" alt="访问地址"/></a> |[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwwlight%2Finfomation-platform)|
-| <a href="https://infomation-platform.netlify.app/" target="_blank"><img src="https://img.shields.io/badge/netlify%20%E5%9C%B0%E5%9D%80-https://infomation--platform.netlify.app/-brightgreen" alt="访问地址"/></a> |[![Netlify Status](https://api.netlify.com/api/v1/badges/786b328b-4a56-43b7-a68e-30224a17d07d/deploy-status)](https://app.netlify.com/sites/infomation-platform/deploys)|
-
+| 访问地址 | 部署 | 状态 |
+| :---: | :---: | :---: |
+|[![Website](https://img.shields.io/badge/vercel%20%E5%9C%B0%E5%9D%80-https://infomation--platform.vercel.app/-brightgreen)](https://infomation-platform.vercel.app/)|[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/wwlight/infomation-platform)|[![Vercel Status](https://vercelbadge.vercel.app/api/wwlight/infomation-platform)](https://vercel.com/wwlight/infomation-platform)|
+|[![Website](https://img.shields.io/badge/netlify%20%E5%9C%B0%E5%9D%80-https://infomation--platform.netlify.app/-brightgreen)](https://infomation-platform.netlify.app/)|[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/wwlight/infomation-platform)|[![Netlify Status](https://api.netlify.com/api/v1/badges/786b328b-4a56-43b7-a68e-30224a17d07d/deploy-status)](https://app.netlify.com/sites/infomation-platform/deploys)|
 
 - `echarts` 地图相关 `geoJson` 文件下载地址：[DataV.GeoAltas](https://datav.aliyun.com/portal/school/atlas/area_selector)
 - 可直接运行下载脚本: `node ./public/download-datav-maps.cjs`
