@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import cloneDeep from 'lodash-es/cloneDeep'
-import LayoutHeader from './layout-header.vue'
-import LayoutLabel from './layout-label.vue'
-import LayoutLeftPanel from './layout-left-panel.vue'
-import LayoutRightPanel from './layout-right-panel.vue'
-import LayoutSearch from './layout-search.vue'
+import LayoutHeader from './_components/layout-header.vue'
+import LayoutLabel from './_components/layout-label.vue'
+import LayoutLeftPanel from './_components/layout-left-panel.vue'
+import LayoutRightPanel from './_components/layout-right-panel.vue'
+import LayoutSearch from './_components/layout-search.vue'
 
 const DEFAULT_SEARCH = {
   centerName: undefined,
@@ -53,11 +53,11 @@ function resetSearch() {
         <div
           class="pointer-events-none absolute inset-0 z-3 bg-[url(~/assets/images/bg-fullscreen-mask.png)] bg-cover bg-no-repeat"
         />
-        <LayoutHeader />
-        <LayoutSearch v-model="search" class="animate-fade-in animate-duration-300" />
-        <LayoutLabel v-model="labelIdList" class="animate-fade-in animate-duration-300" @reset="resetSearch" />
-        <LayoutLeftPanel />
-        <LayoutRightPanel />
+        <layout-header />
+        <layout-search v-model="search" class="animate-fade-in animate-duration-300" />
+        <layout-label v-model="labelIdList" class="animate-fade-in animate-duration-300" @reset="resetSearch" />
+        <layout-left-panel />
+        <layout-right-panel />
         <slot />
       </div>
     </div>

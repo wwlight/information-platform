@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '~/plugins/vue3-scroll-seamless.client',
   ],
   ssr: false,
+  pages: {
+    pattern: ['**/*.vue', '!**/_*'],
+  },
   devtools: { enabled: false },
   app: {
     head: {
@@ -22,15 +25,10 @@ export default defineNuxtConfig({
       apiBase: '',
     },
   },
-  devServer: {
-    host: '0.0.0.0',
-    port: 8888,
-  },
   features: {
-    // For UnoCSS
-    inlineStyles: false,
+    inlineStyles: false, // For UnoCSS
   },
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2025-06-22',
   nitro: {
     routeRules: {
       '/api/**': {
@@ -38,13 +36,6 @@ export default defineNuxtConfig({
         headers: {
           'Access-Control-Allow-Origin': '*',
         },
-      },
-    },
-  },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: { api: 'modern-compiler' },
       },
     },
   },
