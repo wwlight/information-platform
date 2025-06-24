@@ -25,6 +25,9 @@ export default defineNuxtConfig({
       apiBase: '',
     },
   },
+  ignore: [
+    'layouts/_components',
+  ],
   features: {
     inlineStyles: false, // For UnoCSS
   },

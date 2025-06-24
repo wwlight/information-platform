@@ -8,23 +8,24 @@ export interface ResOptions<T> {
   success: boolean
 }
 
+function err(message: string = '请求失败！') {
+  ElMessage.closeAll()
+  ElMessage.error({
+    message,
+    customClass: 'min-w-80% break-all',
+  })
+}
+
 function handleError<T>(response: FetchResponse<ResOptions<T>> & FetchResponse<ResponseType>) {
-  const err = (text: string) => {
-    ElMessage.error({
-      message: response?._data?.message ?? text,
-    })
+  const handleMap: Record<number, string> = {
+    404: '服务器资源不存在',
+    500: '服务器内部错误',
+    403: '没有权限访问该资源',
+    401: '登录状态已过期，需要重新登录',
   }
-  if (!response._data) {
-    err('请求超时，服务器无响应！')
-    return
-  }
-  const handleMap: { [key: number]: () => void } = {
-    404: () => err('服务器资源不存在'),
-    500: () => err('服务器内部错误'),
-    403: () => err('没有权限访问该资源'),
-    401: () => err('登录状态已过期，需要重新登录'),
-  }
-  handleMap[response.status] ? handleMap[response.status]() : err('未知错误！')
+
+  const msg = response?._data?.message
+  err(msg ?? handleMap[response.status])
 }
 
 // get方法传递数组形式参数
@@ -42,15 +43,20 @@ function paramsSerializer(params?: SearchParameters) {
   return query
 }
 
+const { public: { apiBase } } = useRuntimeConfig()
 const fetch = $fetch.create({
   onRequest({ options }) {
-    options.params = paramsSerializer(options.params)
-    const { public: { apiBase } } = useRuntimeConfig()
     options.baseURL = apiBase
     options.headers = new Headers({
       ...options.headers,
       'Content-Type': 'application/json',
     })
+    options.params = paramsSerializer(options.params)
+  },
+  onRequestError({ error }) {
+    if (error.name === 'TimeoutError') {
+      err('请求超时！请您稍后重试')
+    }
   },
   onResponse({ response }) {
     if (response._data.code !== 200) {
